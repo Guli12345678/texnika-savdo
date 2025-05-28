@@ -1,3 +1,5 @@
+// Maxsus texnika loyihasida Machine va MachineImages tablelariga CRUD yozish. Video ozirida tushuntirilgan
+
 const express = require("express");
 const config = require("config");
 const PORT = config.get("port");

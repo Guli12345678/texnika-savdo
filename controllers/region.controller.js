@@ -1,5 +1,8 @@
 const { sendErrorResponse } = require("../helpers/send_error_res");
+const District = require("../models/district.model");
+const Machine = require("../models/machine.model");
 const Region = require("../models/region.model");
+
 const addregion = async (req, res) => {
   try {
     const { name } = req.body;
@@ -11,7 +14,16 @@ const addregion = async (req, res) => {
 };
 const getAllregions = async (req, res) => {
   try {
-    const regions = await Region.findAll();
+    const regions = await Region.findAll({
+      include: [
+        {
+          model: District,
+        },
+        { model: Machine, attributes: ["name"] },
+      ],
+      attributes: ["name"],
+    });
+
     res.status(200).send(regions);
   } catch (error) {
     console.log("Err: ", error);

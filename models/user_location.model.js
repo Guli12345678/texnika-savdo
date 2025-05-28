@@ -1,10 +1,9 @@
 const sequelize = require("../config/db");
-
 const { DataTypes } = require("sequelize");
-const Machine = require("./machine.model");
+const User = require("./user.model");
 
-const Category = sequelize.define(
-  "category",
+const User_location = sequelize.define(
+  "user_location",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -14,14 +13,16 @@ const Category = sequelize.define(
     name: {
       type: DataTypes.STRING(50),
     },
+    address: {
+      type: DataTypes.STRING(1000),
+    },
   },
   {
     freezeTableName: true,
-    timestamps: false,
   }
 );
 
-Category.hasMany(Machine);
-Machine.belongsTo(Category);
+User.hasMany(User_location);
+User_location.belongsTo(User);
 
-module.exports = Category;
+module.exports = User_location;

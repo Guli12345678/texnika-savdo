@@ -1,6 +1,7 @@
 const sequelize = require("../config/db");
 
 const { DataTypes } = require("sequelize");
+const Machine = require("./machine.model");
 
 const District = sequelize.define(
   "district",
@@ -19,5 +20,7 @@ const District = sequelize.define(
     timestamps: false,
   }
 );
+District.hasMany(Machine);
+Machine.belongsTo(District);
 
 module.exports = District;

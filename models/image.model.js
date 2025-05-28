@@ -2,7 +2,7 @@ const sequelize = require("../config/db");
 
 const { DataTypes } = require("sequelize");
 
-const Image = sequelize.define(
+const Images = sequelize.define(
   "image",
   {
     id: {
@@ -16,9 +16,6 @@ const Image = sequelize.define(
     uploaded_at: {
       type: DataTypes.STRING(50),
     },
-    machine_id: {
-      type: DataTypes.STRING(50),
-    },
   },
   {
     freezeTableName: true,
@@ -26,4 +23,4 @@ const Image = sequelize.define(
   }
 );
 
-module.exports = Image;
+module.exports = Images;
