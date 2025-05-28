@@ -1,9 +1,11 @@
 const { sendErrorResponse } = require("../helpers/send_error_res");
 const Image = require("../models/image.model");
+const Machine = require("../models/machine.model");
 const addimage = async (req, res) => {
   try {
-    const { image_url, uploaded_at, machine_id } = req.body;
-    const newimage = await Image.create({ image_url, uploaded_at, machine_id });
+    const { image_url, uploaded_at, machineId } = req.body;
+    const machine = Machine.findByPk(machineId);
+    const newimage = await Image.create({ image_url, uploaded_at, machineId });
     res.status(201).send({ message: "Yangi image qoshildi", newimage });
   } catch (error) {
     sendErrorResponse(error, res);
