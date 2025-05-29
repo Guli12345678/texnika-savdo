@@ -1,27 +1,27 @@
 const sequelize = require("../config/db");
 
 const { DataTypes } = require("sequelize");
-const Contract = require("./contract.model");
 
-const Status = sequelize.define(
-  "status",
+const Review = sequelize.define(
+  "review",
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    status: {
+    rating: {
       type: DataTypes.STRING(50),
+    },
+    comment: {
+      type: DataTypes.STRING,
     },
   },
   {
     freezeTableName: true,
-    timestamps: false,
+    timestamps: true,
+    updatedAt: false,
   }
 );
 
-Status.hasMany(Contract);
-Contract.belongsTo(Status);
-
-module.exports = Status;
+module.exports = Review;

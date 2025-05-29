@@ -26,6 +26,15 @@ const addMachine = async (req, res) => {
     if (!region) {
       sendErrorResponse({ message: "Bunday Machine mavjud emas" }, res, 400);
     }
+    if (!cat) {
+      sendErrorResponse({ message: "Bunday Machine mavjud emas" }, res, 400);
+    }
+    if (!owner) {
+      sendErrorResponse({ message: "Bunday Machine mavjud emas" }, res, 400);
+    }
+    if (!district) {
+      sendErrorResponse({ message: "Bunday Machine mavjud emas" }, res, 400);
+    }
     const newregion = await Machine.create({
       name,
       categoryId,

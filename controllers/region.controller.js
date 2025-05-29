@@ -21,7 +21,6 @@ const getAllregions = async (req, res) => {
         },
         { model: Machine, attributes: ["name"] },
       ],
-      attributes: ["name"],
     });
 
     res.status(200).send(regions);

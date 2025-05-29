@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
 const UserAddress = require("../models/user_location.model");
 const Machine = require("../models/machine.model");
+const Role = require("../models/roles.model");
 const adduser = async (req, res) => {
   try {
-    const { full_name, phone, email, password, confirm_password } =
-      req.body;
+    const { full_name, phone, email, password, confirm_password } = req.body;
 
     const candidate = await User.findOne({ where: { email } });
     if (candidate) {
@@ -35,7 +35,6 @@ const adduser = async (req, res) => {
 const findAllUser_locations = async (req, res) => {
   try {
     const users = await User.findAll({
-      // include: User
       include: [
         {
           model: UserAddress,
@@ -45,8 +44,11 @@ const findAllUser_locations = async (req, res) => {
           model: Machine,
           attributes: ["name"],
         },
+        {
+          model: Role,
+          through: { attributes: [] },
+        },
       ],
-      attributes: ["full_name", "phone"],
     });
     res.status(200).send({ message: "Users found!", users });
   } catch (error) {

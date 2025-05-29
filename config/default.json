@@ -4,5 +4,11 @@
   "db_username": "postgres",
   "db_port": 5432,
   "db_password": "admin1234",
-  "db_name": "texnika-savdo"
+  "db_name": "texnika-savdo",
+
+  "access_key": "AccessToKenSecretKeysdfsdfsdf",
+  "refresh_key": "RefreshToKenSecretKeysdfsdfsdf",
+  "access_time": "15h",
+  "refresh_time": "30d",
+  "cookie_refresh_time": 1296000000
 }

@@ -1,23 +1,16 @@
 const sequelize = require("../config/db");
-
 const { DataTypes } = require("sequelize");
 
-const Comission = sequelize.define(
-  "comission",
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    percent: {
-      type: DataTypes.STRING(50),
-    },
+const Comission = sequelize.define("comission", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
   },
-  {
-    freezeTableName: true,
-    timestamps: false,
-  }
-);
+  percent: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+});
 
 module.exports = Comission;

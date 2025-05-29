@@ -1,6 +1,9 @@
 const sequelize = require("../config/db");
 const { DataTypes } = require("sequelize");
 const Machine = require("./machine.model");
+const Review = require("./reviews.model");
+const Role = require("./roles.model");
+const Contract = require("./contract.model");
 
 const User = sequelize.define(
   "users",
@@ -10,6 +13,7 @@ const User = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+
     full_name: {
       type: DataTypes.STRING(50),
       allowNull: false,
@@ -29,22 +33,31 @@ const User = sequelize.define(
       },
     },
     is_active: {
-      type: DataTypes.STRING(50),
-      defaultValue: false,
+      type: DataTypes.STRING,
     },
     hashed_password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     hashedToken: {
-      type: DataTypes.STRING(50),
+      type: DataTypes.STRING,
     },
   },
   {
     freezeTableName: true,
   }
 );
+
 User.hasMany(Machine);
 Machine.belongsTo(User);
-  
+
+User.hasMany(Review);
+Review.belongsTo(User);
+
+User.hasMany(Contract);
+Contract.belongsTo(User);
+
+User.belongsToMany(Role, { through: "UserRole" });
+Role.belongsToMany(User, { through: "UserRole" });
+
 module.exports = User;

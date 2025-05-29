@@ -2,8 +2,8 @@ const { sendErrorResponse } = require("../helpers/send_error_res");
 const Status = require("../models/status.model");
 const addstatus = async (req, res) => {
   try {
-    const { name } = req.body;
-    const newstatus = await Status.create({ name });
+    const { status } = req.body;
+    const newstatus = await Status.create({ status });
     res.status(201).send({ message: "Yangi status qoshildi", newstatus });
   } catch (error) {
     sendErrorResponse(error, res);

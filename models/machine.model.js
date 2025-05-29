@@ -1,5 +1,7 @@
 const sequelize = require("../config/db");
 const Images = require("../models/image.model");
+const Contract = require("../models/contract.model");
+const Review = require("../models/reviews.model");
 const { DataTypes } = require("sequelize");
 
 const Machine = sequelize.define(
@@ -10,6 +12,7 @@ const Machine = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+
     name: {
       type: DataTypes.STRING(50),
     },
@@ -37,5 +40,12 @@ const Machine = sequelize.define(
 );
 Machine.hasMany(Images);
 Images.belongsTo(Machine);
+
+Machine.hasMany(Review);
+Review.belongsTo(Machine);
+
+Machine.hasMany(Contract);
+Contract.belongsTo(Machine);
+
 
 module.exports = Machine;
