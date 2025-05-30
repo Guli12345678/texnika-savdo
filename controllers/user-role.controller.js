@@ -41,6 +41,9 @@ const findAllUserRoles = async (req, res) => {
         {
           model: User,
         },
+        {
+          model: Role,
+        },
       ],
     });
     res.status(200).send({ message: "Roles found!", userRoles });

@@ -17,12 +17,12 @@ const UserRole = sequelize.define(
   }
 );
 
-User.belongsToMany(Role, { through: "UserRole" });
-Role.belongsToMany(User, { through: "UserRole" });
+
+User.belongsToMany(Role, { through: UserRole });
+Role.belongsToMany(User, { through: UserRole });
 
 UserRole.belongsTo(Role);
 
 UserRole.belongsTo(User);
-User.hasMany(UserRole);
 
 module.exports = UserRole;

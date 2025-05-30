@@ -14,6 +14,7 @@ const authRouter = require("./auth.routes");
 const paymentRouter = require("./payment.routes");
 const reviewRouter = require("./reviews.routes");
 const contractRouter = require("./contract.routes");
+const aqlliSorovRouter = require("./aqqliSorov.routes");
 
 router.use("/category", categoryRouter);
 router.use("/district", districtRouter);
@@ -30,5 +31,6 @@ router.use("/auth", authRouter);
 router.use("/contract", contractRouter);
 router.use("/payment", paymentRouter);
 router.use("/review", reviewRouter);
+router.use("/aqqliSorov", aqlliSorovRouter);
 
 module.exports = router;

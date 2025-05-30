@@ -13,14 +13,17 @@ const Contract = sequelize.define(
     total_price: {
       type: DataTypes.DECIMAL(8, 2),
     },
+    userId: {
+      type: DataTypes.INTEGER,
+    },
     date: {
       type: DataTypes.DATE,
     },
     start_time: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
     },
     end_time: {
-      type: DataTypes.TIME,
+      type: DataTypes.DATE,
     },
     total_time: {
       type: DataTypes.STRING,

@@ -54,10 +54,7 @@ Machine.belongsTo(User);
 User.hasMany(Review);
 Review.belongsTo(User);
 
-User.hasMany(Contract);
+User.hasMany(Contract, { foreignKey: "userId" });
 Contract.belongsTo(User);
-
-User.belongsToMany(Role, { through: "UserRole" });
-Role.belongsToMany(User, { through: "UserRole" });
 
 module.exports = User;

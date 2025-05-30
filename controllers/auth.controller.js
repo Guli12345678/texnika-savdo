@@ -35,11 +35,11 @@ const login = async (req, res) => {
         400
       );
     }
-
+    console.log(user);
     const payload = {
       id: user.id,
       email: user.email,
-      role: user.roles,
+      roles: user.roles,
     };
 
     const tokens = jwtService.generateTokens(payload);

@@ -20,7 +20,6 @@ const Status = sequelize.define(
     timestamps: false,
   }
 );
-
 Status.hasMany(Contract);
 Contract.belongsTo(Status);
 

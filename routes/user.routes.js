@@ -4,12 +4,13 @@ const {
   updateById,
   removeById,
 } = require("../controllers/users.controller");
+const selfGuard = require("../middleware/guards/self.guard");
 
 const router = require("express").Router();
 
 router.post("/", adduser);
 router.patch("/:id", updateById);
-router.get("/", findAllUser_locations);
+router.get("/:id", findAllUser_locations);
 router.delete("/:id", removeById);
 
 module.exports = router;
